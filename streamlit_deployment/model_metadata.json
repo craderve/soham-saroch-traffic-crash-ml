@@ -1,0 +1,86 @@
+{
+  "creation_date": "2025-07-17T12:04:37.639072",
+  "project_name": "US Traffic Crash ML",
+  "models_info": {
+    "classification": {
+      "model_name": "XGBoost",
+      "model_file": "severity_classifier.pkl",
+      "parameters": {
+        "learning_rate": 0.2,
+        "max_depth": 7,
+        "n_estimators": 200
+      },
+      "cv_score": 0.8649636106849629
+    },
+    "regression": {
+      "model_name": "XGBoost Regressor",
+      "model_file": "location_regressor.pkl",
+      "parameters": {
+        "estimator__learning_rate": 0.2,
+        "estimator__max_depth": 7,
+        "estimator__n_estimators": 200
+      },
+      "cv_score": 0.9970644315083822
+    }
+  },
+  "preprocessing_info": {
+    "numerical_features": [
+      "Temperature(F)",
+      "Wind_Chill(F)",
+      "Humidity(%)",
+      "Pressure(in)",
+      "Visibility(mi)",
+      "Wind_Speed(mph)",
+      "Precipitation(in)",
+      "Hour",
+      "Month"
+    ],
+    "categorical_features": [
+      "County",
+      "State",
+      "Timezone",
+      "Wind_Direction",
+      "Weather_Condition",
+      "Sunrise_Sunset",
+      "Civil_Twilight",
+      "Nautical_Twilight",
+      "Astronomical_Twilight",
+      "DayOfWeek"
+    ],
+    "boolean_features": [
+      "Amenity",
+      "Bump",
+      "Crossing",
+      "Give_Way",
+      "Junction",
+      "No_Exit",
+      "Railway",
+      "Roundabout",
+      "Station",
+      "Stop",
+      "Traffic_Calming",
+      "Traffic_Signal",
+      "Turning_Loop",
+      "IsWeekend"
+    ],
+    "target_severity": "Severity",
+    "target_location": [
+      "Start_Lat",
+      "Start_Lng"
+    ],
+    "preprocessor_file": "preprocessor.pkl",
+    "feature_names_file": "feature_names.pkl"
+  },
+  "performance_metrics": {
+    "classification": {
+      "test_accuracy": 0.7851450077485056
+    },
+    "regression": {
+      "r2": 0.9971253871917725,
+      "mae": 0.24592480063438416,
+      "rmse": 0.4421193262393518,
+      "mae_lat": 0.22902535206214414,
+      "mae_lng": 0.2628242522529626
+    }
+  }
+}

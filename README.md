@@ -1,3 +1,65 @@
+# Sanjeev Saroch · TrafficLens
+
+A personalized, responsive US traffic crash exploration dashboard, adapted from
+[v0lencia/US-Traffic-Crash-ML-main](https://github.com/v0lencia/US-Traffic-Crash-ML-main).
+The original trained XGBoost models, notebook, and MIT attribution are preserved.
+The new interface calls a Flask API and runs on Vercel without a Streamlit server.
+
+## Run the dashboard locally
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
+Open `http://127.0.0.1:5000`. On macOS, XGBoost needs an OpenMP runtime. If libomp
+is not installed, the runtime already bundled with scikit-learn can be used:
+
+```bash
+export DYLD_LIBRARY_PATH="$(python -c 'import sklearn,pathlib; print(pathlib.Path(sklearn.__file__).parent / ".dylibs")')"
+python app.py
+```
+
+## Validate and deploy
+
+```bash
+python -m unittest discover -s tests -v
+node --check public/app.js
+vercel --prod --yes
+```
+
+Vercel detects the root Flask entrypoint `app.py`. `.python-version` pins its
+runtime to Python 3.12. Production requirements use CPU-only XGBoost on Linux to
+avoid unnecessary CUDA dependencies. `public/` contains the CDN-served interface.
+Models load lazily and remain cached across warm requests. The first prediction
+may take longer while the function starts.
+
+API endpoints: `GET /api/health`, `GET /api/options`, and `POST /api/predict`.
+The prediction endpoint validates numeric ranges, categories, and boolean inputs.
+Tests cover real inference, feature mapping, invalid inputs, and oversized bodies.
+
+Notebook dependencies are preserved in `requirements-dev.txt`. To run the
+original Streamlit interface, use `streamlit_deployment/requirements.txt` and
+`streamlit run streamlit_deployment/app.py` from the repository root.
+
+## Important limitations and attribution
+
+This is an educational adaptation, not a real-time accident forecast or navigation
+safety tool. Severity means the dataset's traffic-impact category, not injury
+severity or the probability that a crash will happen. Model probabilities are not
+calibrated safety guarantees. Coordinates are model estimates, not observed incidents.
+The original pipeline estimates wind chill as temperature minus 5 °F, fixes twilight
+to Day, and offers counties independently of state. Those assumptions are retained
+for compatibility and can produce geographically inconsistent scenarios.
+
+The displayed evaluation metrics come from the original model metadata, not a new
+evaluation. Original implementation and models: **Anıl Metin**, copyright 2025.
+Personalized dashboard adaptation: **Sanjeev Saroch**. See [LICENSE](LICENSE).
+
+---
+
 # 🚗 US Traffic Crash Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.13.5-blue)

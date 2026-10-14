@@ -1,0 +1,50 @@
+# US Traffic Crash Analysis and Prediction Project
+# Requirements file for workspace environment
+# Updated for July 2025 - Current installed versions
+
+# Core Data Science
+pandas==2.3.1
+numpy==2.3.1
+
+# Visualization
+matplotlib==3.10.3
+seaborn==0.13.2
+plotly==6.2.0
+
+# Machine Learning
+scikit-learn==1.6.1
+xgboost==3.0.2
+
+# Class Imbalance Handling
+imbalanced-learn==0.13.0
+
+# Model Explainability & Interpretability
+shap==0.48.0
+lime==0.2.0.1
+
+# Geospatial Visualization
+folium==0.20.0
+
+# Text Analysis & Visualization
+wordcloud==1.9.4
+
+# Performance & Optimization
+numba==0.61.2
+
+# Data Processing Utilities
+openpyxl>=3.1.0  # For Excel file support
+xlsxwriter>=3.2.0  # For Excel output
+
+# Statistical Analysis
+scipy==1.16.0
+
+# Additional utilities
+networkx==3.5
+pillow==11.3.0
+pyparsing==3.2.3
+python-dateutil==2.9.0.post0
+pytz==2025.2
+requests==2.32.4
+six==1.17.0
+threadpoolctl==3.6.0
+typing-extensions==4.14.1

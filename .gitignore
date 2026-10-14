@@ -78,3 +78,7 @@ figures/
 
 # Dataset
 US_Accidents_March23.csv
+
+# Local deployment and frontend testing
+.vercel/
+node_modules/

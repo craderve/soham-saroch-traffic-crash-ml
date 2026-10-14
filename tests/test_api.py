@@ -10,6 +10,11 @@ class TrafficLensTests(unittest.TestCase):
 
     def test_options_and_health(self):
         self.assertEqual(self.client.get('/api/health').status_code, 200)
+        self.assertEqual(self.client.get('/api/health').json['project'], 'Soham Saroch TrafficLens')
+        page = self.client.get('/').get_data(as_text=True)
+        self.assertIn('<title>TrafficLens | Soham Saroch</title>', page)
+        self.assertIn('https://github.com/craderve/soham-saroch-traffic-crash-ml', page)
+        self.assertNotIn('Sanjeev Saroch', page)
         response = self.client.get('/api/options')
         self.assertEqual(response.status_code, 200)
         self.assertIn('Los Angeles', response.json['counties'])

@@ -1,4 +1,4 @@
-# Sanjeev Saroch · TrafficLens
+# Soham Saroch · TrafficLens
 
 A personalized, responsive US traffic crash exploration dashboard, adapted from
 [v0lencia/US-Traffic-Crash-ML-main](https://github.com/v0lencia/US-Traffic-Crash-ML-main).
@@ -56,7 +56,7 @@ for compatibility and can produce geographically inconsistent scenarios.
 
 The displayed evaluation metrics come from the original model metadata, not a new
 evaluation. Original implementation and models: **Anıl Metin**, copyright 2025.
-Personalized dashboard adaptation: **Sanjeev Saroch**. See [LICENSE](LICENSE).
+Personalized dashboard adaptation: **Soham Saroch**. See [LICENSE](LICENSE).
 
 ---
 

@@ -118,7 +118,7 @@ def asset():
 
 @app.get("/api/health")
 def health():
-    return jsonify(status="ok", project="Sanjeev Saroch TrafficLens")
+    return jsonify(status="ok", project="Soham Saroch TrafficLens")
 
 
 @app.get("/api/options")
